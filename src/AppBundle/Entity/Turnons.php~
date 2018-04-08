@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Turnons
+ *
+ * @ORM\Table(name="turnons", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="TOID", columns={"TOID"})})
+ * @ORM\Entity
+ */
+class Turnons
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TOIcon", type="string", length=80, nullable=true)
+     */
+    private $toicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TOName", type="string", length=60, nullable=false)
+     */
+    private $toname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TOID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $toid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+
+}
+

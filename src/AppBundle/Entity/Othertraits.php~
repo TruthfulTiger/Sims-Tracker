@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Othertraits
+ *
+ * @ORM\Table(name="othertraits", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="TraitID", columns={"TraitID"})})
+ * @ORM\Entity
+ */
+class Othertraits
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TraitIcon", type="string", length=80, nullable=true)
+     */
+    private $traiticon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TraitName", type="string", length=50, nullable=false)
+     */
+    private $traitname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TraitID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $traitid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+
+}
+

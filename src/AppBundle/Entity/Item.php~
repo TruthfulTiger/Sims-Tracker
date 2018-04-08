@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Item
+ *
+ * @ORM\Table(name="item", indexes={@ORM\Index(name="AlignmentID", columns={"AlignmentID"})})
+ * @ORM\Entity
+ */
+class Item
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ItemName", type="string", length=80, nullable=false)
+     */
+    private $itemname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MinLevel", type="integer", nullable=true)
+     */
+    private $minlevel = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ItemID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $itemid;
+
+    /**
+     * @var \AppBundle\Entity\Alignment
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Alignment")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="AlignmentID", referencedColumnName="AlignmentID")
+     * })
+     */
+    private $alignmentid;
+
+
+}
+

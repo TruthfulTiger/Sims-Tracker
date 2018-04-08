@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Petpersonality
+ *
+ * @ORM\Table(name="petpersonality")
+ * @ORM\Entity
+ */
+class Petpersonality
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PersonalityName", type="string", length=60, nullable=false)
+     */
+    private $personalityname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PersonalityID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $personalityid;
+
+
+}
+

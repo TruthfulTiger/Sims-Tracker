@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Greekhouselevel
+ *
+ * @ORM\Table(name="greekhouselevel", indexes={@ORM\Index(name="GHLevelID", columns={"GHLevelID"})})
+ * @ORM\Entity
+ */
+class Greekhouselevel
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="RankNo", type="integer", nullable=false)
+     */
+    private $rankno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NoFriends", type="integer", nullable=true)
+     */
+    private $nofriends = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MaxMembers", type="integer", nullable=true)
+     */
+    private $maxmembers = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GHLevelID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ghlevelid;
+
+
+}
+

@@ -1,0 +1,62 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Game
+ *
+ * @ORM\Table(name="game")
+ * @ORM\Entity
+ */
+class Game
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GameIcon", type="string", length=80, nullable=true)
+     */
+    private $gameicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GameName", type="string", length=50, nullable=false)
+     */
+    private $gamename;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GameID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $gameid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ep", inversedBy="gameid")
+     * @ORM\JoinTable(name="gameep",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="GameID", referencedColumnName="GameID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     *   }
+     * )
+     */
+    private $epid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->epid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

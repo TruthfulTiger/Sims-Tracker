@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Agegroup
+ *
+ * @ORM\Table(name="agegroup", indexes={@ORM\Index(name="AgeID", columns={"AgeID"})})
+ * @ORM\Entity
+ */
+class Agegroup
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AgeIcon", type="string", length=80, nullable=true)
+     */
+    private $ageicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AgeName", type="string", length=50, nullable=false)
+     */
+    private $agename;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Lifespan", type="integer", nullable=false)
+     */
+    private $lifespan;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AgeID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ageid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\School", mappedBy="ageid")
+     */
+    private $schoolid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->schoolid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

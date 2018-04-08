@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Creature
+ *
+ * @ORM\Table(name="creature", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="CreatureID", columns={"CreatureID"})})
+ * @ORM\Entity
+ */
+class Creature
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CreatureIcon", type="string", length=80, nullable=true)
+     */
+    private $creatureicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CreatureName", type="string", length=50, nullable=false)
+     */
+    private $creaturename;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="IsImmortal", type="boolean", nullable=false)
+     */
+    private $isimmortal;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CreatureID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $creatureid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+
+}
+

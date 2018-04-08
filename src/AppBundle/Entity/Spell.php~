@@ -1,0 +1,79 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Spell
+ *
+ * @ORM\Table(name="spell", indexes={@ORM\Index(name="AlignmentID", columns={"AlignmentID"})})
+ * @ORM\Entity
+ */
+class Spell
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SpellName", type="string", length=60, nullable=false)
+     */
+    private $spellname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MagicLevel", type="integer", nullable=false)
+     */
+    private $magiclevel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SpellID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $spellid;
+
+    /**
+     * @var \AppBundle\Entity\Alignment
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Alignment")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="AlignmentID", referencedColumnName="AlignmentID")
+     * })
+     */
+    private $alignmentid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Reagent", inversedBy="spellid")
+     * @ORM\JoinTable(name="spellreagent",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="SpellID", referencedColumnName="SpellID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="ReagentID", referencedColumnName="ReagentID")
+     *   }
+     * )
+     */
+    private $reagentid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reagentid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

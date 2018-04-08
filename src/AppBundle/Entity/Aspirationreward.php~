@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Aspirationreward
+ *
+ * @ORM\Table(name="aspirationreward", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="AspRewardID", columns={"AspRewardID"})})
+ * @ORM\Entity
+ */
+class Aspirationreward
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AspRewardName", type="string", length=60, nullable=false)
+     */
+    private $asprewardname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AspCost", type="integer", nullable=true)
+     */
+    private $aspcost = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AspRewardID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $asprewardid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+
+}
+

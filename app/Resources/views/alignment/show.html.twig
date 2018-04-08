@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Alignment</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Alignmenticon</th>
+                <td>{{ alignment.alignmenticon }}</td>
+            </tr>
+            <tr>
+                <th>Alignmentname</th>
+                <td>{{ alignment.alignmentname }}</td>
+            </tr>
+            <tr>
+                <th>Alignmentid</th>
+                <td>{{ alignment.alignmentid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('alignment_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('alignment_edit', { 'alignmentid': alignment.alignmentid }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

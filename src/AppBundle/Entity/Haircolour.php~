@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Haircolour
+ *
+ * @ORM\Table(name="haircolour", indexes={@ORM\Index(name="HCID", columns={"HCID"})})
+ * @ORM\Entity
+ */
+class Haircolour
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="HairIcon", type="string", length=80, nullable=true)
+     */
+    private $hairicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="HairColourName", type="string", length=50, nullable=false)
+     */
+    private $haircolourname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="HCID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $hcid;
+
+
+}
+

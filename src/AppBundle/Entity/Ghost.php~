@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ghost
+ *
+ * @ORM\Table(name="ghost", indexes={@ORM\Index(name="GhostID", columns={"GhostID"})})
+ * @ORM\Entity
+ */
+class Ghost
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GhostName", type="string", length=60, nullable=true)
+     */
+    private $ghostname = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GhostID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ghostid;
+
+
+}
+

@@ -1,0 +1,55 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Species
+ *
+ * @ORM\Table(name="species")
+ * @ORM\Entity
+ */
+class Species
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=50, nullable=true)
+     */
+    private $name = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SpeciesID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $speciesid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Petjob", inversedBy="speciesid")
+     * @ORM\JoinTable(name="speciesjob",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="SpeciesID", referencedColumnName="SpeciesID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="PetJobID", referencedColumnName="PetJobID")
+     *   }
+     * )
+     */
+    private $petjobid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->petjobid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

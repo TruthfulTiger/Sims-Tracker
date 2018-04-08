@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Aspbenefit
+ *
+ * @ORM\Table(name="aspbenefit", indexes={@ORM\Index(name="BenCatID", columns={"BenCatID"}), @ORM\Index(name="BenefitID", columns={"BenefitID"})})
+ * @ORM\Entity
+ */
+class Aspbenefit
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BenefitIcon", type="string", length=80, nullable=true)
+     */
+    private $benefiticon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BenefitName", type="string", length=50, nullable=false)
+     */
+    private $benefitname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BenFunction", type="string", length=255, nullable=true)
+     */
+    private $benfunction = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="BenefitID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $benefitid;
+
+    /**
+     * @var \AppBundle\Entity\Benefitcategory
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Benefitcategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="BenCatID", referencedColumnName="BenCatID")
+     * })
+     */
+    private $bencatid;
+
+
+}
+

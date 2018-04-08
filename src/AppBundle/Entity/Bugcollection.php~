@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bugcollection
+ *
+ * @ORM\Table(name="bugcollection", indexes={@ORM\Index(name="BugID", columns={"BugID"})})
+ * @ORM\Entity
+ */
+class Bugcollection
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BugIcon", type="string", length=80, nullable=true)
+     */
+    private $bugicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BugName", type="string", length=60, nullable=false)
+     */
+    private $bugname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="BugID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $bugid;
+
+
+}
+

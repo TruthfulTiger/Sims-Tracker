@@ -1,0 +1,110 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Want
+ *
+ * @ORM\Table(name="want", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="CareerID", columns={"CareerID"}), @ORM\Index(name="WantID", columns={"WantID"})})
+ * @ORM\Entity
+ */
+class Want
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="WantIcon", type="string", length=80, nullable=true)
+     */
+    private $wanticon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="WantName", type="string", length=50, nullable=false)
+     */
+    private $wantname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CounterValue", type="integer", nullable=true)
+     */
+    private $countervalue = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AspPoints", type="integer", nullable=true)
+     */
+    private $asppoints = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="InfluencePoints", type="integer", nullable=true)
+     */
+    private $influencepoints = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="WantID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $wantid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+    /**
+     * @var \AppBundle\Entity\Career
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Career")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="CareerID", referencedColumnName="CareerID")
+     * })
+     */
+    private $careerid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Aspiration", inversedBy="wantid")
+     * @ORM\JoinTable(name="impossiblewant",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="WantID", referencedColumnName="WantID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="AspirationID", referencedColumnName="AspirationID")
+     *   }
+     * )
+     */
+    private $aspirationid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aspirationid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

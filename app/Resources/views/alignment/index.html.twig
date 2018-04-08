@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Alignments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Alignmenticon</th>
+                <th>Alignmentname</th>
+                <th>Alignmentid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alignment in alignments %}
+            <tr>
+                <td><a href="{{ path('alignment_show', { 'alignmentid': alignment.alignmentid }) }}">{{ alignment.alignmenticon }}</a></td>
+                <td>{{ alignment.alignmentname }}</td>
+                <td>{{ alignment.alignmentid }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('alignment_show', { 'alignmentid': alignment.alignmentid }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('alignment_edit', { 'alignmentid': alignment.alignmentid }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('alignment_new') }}">Create a new alignment</a>
+        </li>
+    </ul>
+{% endblock %}

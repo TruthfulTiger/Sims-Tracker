@@ -1,0 +1,43 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Benefitcategory
+ *
+ * @ORM\Table(name="benefitcategory", indexes={@ORM\Index(name="AspirationID", columns={"AspirationID"}), @ORM\Index(name="BenCatID", columns={"BenCatID"})})
+ * @ORM\Entity
+ */
+class Benefitcategory
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BenCatName", type="string", length=50, nullable=false)
+     */
+    private $bencatname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="BenCatID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $bencatid;
+
+    /**
+     * @var \AppBundle\Entity\Aspiration
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Aspiration")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="AspirationID", referencedColumnName="AspirationID")
+     * })
+     */
+    private $aspirationid;
+
+
+}
+

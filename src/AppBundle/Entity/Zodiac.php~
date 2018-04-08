@@ -1,0 +1,82 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Zodiac
+ *
+ * @ORM\Table(name="zodiac", indexes={@ORM\Index(name="ZodiacID", columns={"ZodiacID"})})
+ * @ORM\Entity
+ */
+class Zodiac
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SignIcon", type="string", length=80, nullable=true)
+     */
+    private $signicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SignName", type="string", length=30, nullable=false)
+     */
+    private $signname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SloppyPoints", type="integer", nullable=false)
+     */
+    private $sloppypoints;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ShyPoints", type="integer", nullable=false)
+     */
+    private $shypoints;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ActivePoints", type="integer", nullable=false)
+     */
+    private $activepoints;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PlayfulPoints", type="integer", nullable=false)
+     */
+    private $playfulpoints;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NicePoints", type="integer", nullable=false)
+     */
+    private $nicepoints;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ZodiacID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $zodiacid;
+
+
+}
+

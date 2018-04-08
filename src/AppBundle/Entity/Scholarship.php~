@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Scholarship
+ *
+ * @ORM\Table(name="scholarship", indexes={@ORM\Index(name="SkillID", columns={"SkillID"}), @ORM\Index(name="ScholarshipID", columns={"ScholarshipID"})})
+ * @ORM\Entity
+ */
+class Scholarship
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ScholName", type="string", length=60, nullable=false)
+     */
+    private $scholname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Requirements", type="string", length=60, nullable=false)
+     */
+    private $requirements;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AwardAmount", type="integer", nullable=true)
+     */
+    private $awardamount = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ScholarshipID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $scholarshipid;
+
+    /**
+     * @var \AppBundle\Entity\Skill
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skill")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="SkillID", referencedColumnName="SkillID")
+     * })
+     */
+    private $skillid;
+
+
+}
+

@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Specialflag
+ *
+ * @ORM\Table(name="specialflag")
+ * @ORM\Entity
+ */
+class Specialflag
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FlagName", type="string", length=50, nullable=false)
+     */
+    private $flagname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="FlagID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $flagid;
+
+
+}
+

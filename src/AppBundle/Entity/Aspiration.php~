@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Aspiration
+ *
+ * @ORM\Table(name="aspiration", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="AspirationID", columns={"AspirationID"})})
+ * @ORM\Entity
+ */
+class Aspiration
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AspIcon", type="string", length=80, nullable=true)
+     */
+    private $aspicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AspName", type="string", length=50, nullable=true)
+     */
+    private $aspname = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AspirationID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $aspirationid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Want", mappedBy="aspirationid")
+     */
+    private $wantid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->wantid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

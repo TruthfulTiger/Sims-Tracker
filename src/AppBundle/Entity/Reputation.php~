@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reputation
+ *
+ * @ORM\Table(name="reputation", indexes={@ORM\Index(name="RepID", columns={"RepID"})})
+ * @ORM\Entity
+ */
+class Reputation
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RepName", type="string", length=50, nullable=false)
+     */
+    private $repname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MinLevel", type="integer", nullable=false)
+     */
+    private $minlevel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="RepID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $repid;
+
+
+}
+

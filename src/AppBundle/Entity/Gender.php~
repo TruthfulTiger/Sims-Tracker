@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Gender
+ *
+ * @ORM\Table(name="gender")
+ * @ORM\Entity
+ */
+class Gender
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GenderIcon", type="string", length=50, nullable=true)
+     */
+    private $gendericon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GenderName", type="string", length=50, nullable=true)
+     */
+    private $gendername = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GenderID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $genderid;
+
+
+}
+

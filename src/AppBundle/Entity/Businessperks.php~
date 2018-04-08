@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Businessperks
+ *
+ * @ORM\Table(name="businessperks", indexes={@ORM\Index(name="BusCatID", columns={"BusCatID"}), @ORM\Index(name="PerkID", columns={"PerkID"})})
+ * @ORM\Entity
+ */
+class Businessperks
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PerkIcon", type="string", length=80, nullable=true)
+     */
+    private $perkicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PerkName", type="string", length=60, nullable=false)
+     */
+    private $perkname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PerkFunction", type="string", length=50, nullable=true)
+     */
+    private $perkfunction = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PerkID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $perkid;
+
+    /**
+     * @var \AppBundle\Entity\Buscategory
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Buscategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="BusCatID", referencedColumnName="BusCatID")
+     * })
+     */
+    private $buscatid;
+
+
+}
+

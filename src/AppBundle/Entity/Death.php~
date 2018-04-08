@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Death
+ *
+ * @ORM\Table(name="death", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="GhostID", columns={"GhostID"}), @ORM\Index(name="DeathID", columns={"DeathID"})})
+ * @ORM\Entity
+ */
+class Death
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DeathName", type="string", length=80, nullable=false)
+     */
+    private $deathname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="DeathID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $deathid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+    /**
+     * @var \AppBundle\Entity\Ghost
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ghost")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GhostID", referencedColumnName="GhostID")
+     * })
+     */
+    private $ghostid;
+
+
+}
+

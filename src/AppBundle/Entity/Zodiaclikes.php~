@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Zodiaclikes
+ *
+ * @ORM\Table(name="zodiaclikes", indexes={@ORM\Index(name="Sign1ID", columns={"Sign1ID"}), @ORM\Index(name="Sign2ID", columns={"Sign2ID"}), @ORM\Index(name="IDX_F2D9AC48427CC0C1", columns={"ZodiacID"})})
+ * @ORM\Entity
+ */
+class Zodiaclikes
+{
+    /**
+     * @var \AppBundle\Entity\Zodiac
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Zodiac")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ZodiacID", referencedColumnName="ZodiacID")
+     * })
+     */
+    private $zodiacid;
+
+    /**
+     * @var \AppBundle\Entity\Zodiac
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Zodiac")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Sign1ID", referencedColumnName="ZodiacID")
+     * })
+     */
+    private $sign1id;
+
+    /**
+     * @var \AppBundle\Entity\Zodiac
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Zodiac")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Sign2ID", referencedColumnName="ZodiacID")
+     * })
+     */
+    private $sign2id;
+
+
+}
+

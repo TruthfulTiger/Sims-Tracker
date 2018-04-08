@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Career
+ *
+ * @ORM\Table(name="career", indexes={@ORM\Index(name="EPID", columns={"EPID"}), @ORM\Index(name="CareerID", columns={"CareerID"})})
+ * @ORM\Entity
+ */
+class Career
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CareerIcon", type="string", length=80, nullable=true)
+     */
+    private $careericon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CareerName", type="string", length=50, nullable=false)
+     */
+    private $careername;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CareerID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $careerid;
+
+    /**
+     * @var \AppBundle\Entity\Ep
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ep")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="EPID", referencedColumnName="EPID")
+     * })
+     */
+    private $epid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Major", mappedBy="careerid")
+     */
+    private $majorid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->majorid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

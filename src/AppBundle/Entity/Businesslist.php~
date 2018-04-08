@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Businesslist
+ *
+ * @ORM\Table(name="businesslist", indexes={@ORM\Index(name="BusTypeID", columns={"BusTypeID"})})
+ * @ORM\Entity
+ */
+class Businesslist
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BusinessName", type="string", length=50, nullable=false)
+     */
+    private $businessname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TotalValue", type="integer", nullable=true)
+     */
+    private $totalvalue = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="BusinessID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $businessid;
+
+    /**
+     * @var \AppBundle\Entity\Businesstype
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Businesstype")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="BusTypeID", referencedColumnName="BusTypeID")
+     * })
+     */
+    private $bustypeid;
+
+
+}
+

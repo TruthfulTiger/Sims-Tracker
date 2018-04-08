@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Witchlevel
+ *
+ * @ORM\Table(name="witchlevel", indexes={@ORM\Index(name="AlignmentID", columns={"AlignmentID"})})
+ * @ORM\Entity
+ */
+class Witchlevel
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LevelName", type="string", length=60, nullable=false)
+     */
+    private $levelname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MinLevel", type="integer", nullable=false)
+     */
+    private $minlevel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="WLID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $wlid;
+
+    /**
+     * @var \AppBundle\Entity\Alignment
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Alignment")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="AlignmentID", referencedColumnName="AlignmentID")
+     * })
+     */
+    private $alignmentid;
+
+
+}
+

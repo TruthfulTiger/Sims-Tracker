@@ -1,0 +1,96 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Uniclass
+ *
+ * @ORM\Table(name="uniclass", indexes={@ORM\Index(name="MajorID", columns={"MajorID"}), @ORM\Index(name="YearID", columns={"YearID"}), @ORM\Index(name="ClassID", columns={"ClassID"})})
+ * @ORM\Entity
+ */
+class Uniclass
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Semester", type="integer", nullable=false)
+     */
+    private $semester;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ClassName", type="string", length=60, nullable=false)
+     */
+    private $classname;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="StartTime", type="time", nullable=true)
+     */
+    private $starttime = 'NULL';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FinishTime", type="time", nullable=true)
+     */
+    private $finishtime = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ClassID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $classid;
+
+    /**
+     * @var \AppBundle\Entity\Major
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Major")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="MajorID", referencedColumnName="MajorID")
+     * })
+     */
+    private $majorid;
+
+    /**
+     * @var \AppBundle\Entity\Year
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Year")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="YearID", referencedColumnName="YearID")
+     * })
+     */
+    private $yearid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Skill", inversedBy="classid")
+     * @ORM\JoinTable(name="classskills",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="ClassID", referencedColumnName="ClassID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="SkillID", referencedColumnName="SkillID")
+     *   }
+     * )
+     */
+    private $skillid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->skillid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

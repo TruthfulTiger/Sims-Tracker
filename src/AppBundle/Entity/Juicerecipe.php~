@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Juicerecipe
+ *
+ * @ORM\Table(name="juicerecipe", indexes={@ORM\Index(name="JuiceID", columns={"JuiceID"})})
+ * @ORM\Entity
+ */
+class Juicerecipe
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="JuiceName", type="string", length=60, nullable=false)
+     */
+    private $juicename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Effects", type="string", length=80, nullable=true)
+     */
+    private $effects = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="JuiceID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $juiceid;
+
+
+}
+

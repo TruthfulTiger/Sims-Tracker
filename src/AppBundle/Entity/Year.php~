@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Year
+ *
+ * @ORM\Table(name="year", indexes={@ORM\Index(name="YearID", columns={"YearID"})})
+ * @ORM\Entity
+ */
+class Year
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="YearName", type="string", length=50, nullable=true)
+     */
+    private $yearname = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="YearID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $yearid;
+
+
+}
+

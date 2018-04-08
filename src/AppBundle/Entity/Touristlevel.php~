@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Touristlevel
+ *
+ * @ORM\Table(name="touristlevel", indexes={@ORM\Index(name="TLevelID", columns={"TLevelID"})})
+ * @ORM\Entity
+ */
+class Touristlevel
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LevelName", type="string", length=50, nullable=false)
+     */
+    private $levelname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="LevelScore", type="integer", nullable=false)
+     */
+    private $levelscore;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TLevelID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $tlevelid;
+
+
+}
+

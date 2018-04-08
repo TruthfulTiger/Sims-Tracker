@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Petagegroup
+ *
+ * @ORM\Table(name="petagegroup")
+ * @ORM\Entity
+ */
+class Petagegroup
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Icon", type="string", length=80, nullable=true)
+     */
+    private $icon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Lifespan", type="integer", nullable=false)
+     */
+    private $lifespan;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PetAgeID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $petageid;
+
+
+}
+

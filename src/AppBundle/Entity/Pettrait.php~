@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pettrait
+ *
+ * @ORM\Table(name="pettrait", indexes={@ORM\Index(name="PersonalityID", columns={"PersonalityID"})})
+ * @ORM\Entity
+ */
+class Pettrait
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TraitName", type="string", length=60, nullable=false)
+     */
+    private $traitname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TraitLevel", type="integer", nullable=false)
+     */
+    private $traitlevel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PetTraitID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $pettraitid;
+
+    /**
+     * @var \AppBundle\Entity\Petpersonality
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Petpersonality")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="PersonalityID", referencedColumnName="PersonalityID")
+     * })
+     */
+    private $personalityid;
+
+
+}
+

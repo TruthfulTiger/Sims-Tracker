@@ -1,0 +1,43 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Souvenir
+ *
+ * @ORM\Table(name="souvenir", indexes={@ORM\Index(name="DestID", columns={"DestID"}), @ORM\Index(name="SouvenirID", columns={"SouvenirID"})})
+ * @ORM\Entity
+ */
+class Souvenir
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SvName", type="string", length=50, nullable=true)
+     */
+    private $svname = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SouvenirID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $souvenirid;
+
+    /**
+     * @var \AppBundle\Entity\Hoodtype
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Hoodtype")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="DestID", referencedColumnName="HoodTypeID")
+     * })
+     */
+    private $destid;
+
+
+}
+

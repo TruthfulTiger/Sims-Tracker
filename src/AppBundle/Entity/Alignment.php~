@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Alignment
+ *
+ * @ORM\Table(name="alignment")
+ * @ORM\Entity
+ */
+class Alignment
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlignmentIcon", type="string", length=80, nullable=true)
+     */
+    private $alignmenticon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AlignmentName", type="string", length=40, nullable=false)
+     */
+    private $alignmentname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AlignmentID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $alignmentid;
+
+
+}
+

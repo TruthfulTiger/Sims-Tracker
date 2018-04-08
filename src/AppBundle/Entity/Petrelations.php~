@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Petrelations
+ *
+ * @ORM\Table(name="petrelations")
+ * @ORM\Entity
+ */
+class Petrelations
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PRIcon", type="string", length=80, nullable=true)
+     */
+    private $pricon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PRName", type="string", length=60, nullable=false)
+     */
+    private $prname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MinLevel", type="integer", nullable=true)
+     */
+    private $minlevel = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PRID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $prid;
+
+
+}
+

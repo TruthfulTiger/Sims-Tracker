@@ -1,0 +1,70 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * School
+ *
+ * @ORM\Table(name="school")
+ * @ORM\Entity
+ */
+class School
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SchoolIcon", type="string", length=80, nullable=true)
+     */
+    private $schoolicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SchoolName", type="string", length=50, nullable=false)
+     */
+    private $schoolname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SchoolID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $schoolid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Agegroup", inversedBy="schoolid")
+     * @ORM\JoinTable(name="schoolage",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="SchoolID", referencedColumnName="SchoolID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="AgeID", referencedColumnName="AgeID")
+     *   }
+     * )
+     */
+    private $ageid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Weekday", mappedBy="schoolid")
+     */
+    private $dayid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ageid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dayid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

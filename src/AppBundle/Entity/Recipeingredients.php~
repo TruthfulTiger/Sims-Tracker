@@ -1,0 +1,42 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Recipeingredients
+ *
+ * @ORM\Table(name="recipeingredients")
+ * @ORM\Entity
+ */
+class Recipeingredients
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="QtyNeeded", type="integer", nullable=false)
+     */
+    private $qtyneeded;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="JuiceID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $juiceid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="IngredientID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $ingredientid;
+
+
+}
+

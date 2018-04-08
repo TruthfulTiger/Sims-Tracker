@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Badgescore
+ *
+ * @ORM\Table(name="badgescore", indexes={@ORM\Index(name="BSID", columns={"BSID"})})
+ * @ORM\Entity
+ */
+class Badgescore
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BadgeScoreName", type="string", length=50, nullable=true)
+     */
+    private $badgescorename = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="BSID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $bsid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Talentbadge", mappedBy="bsid")
+     */
+    private $badgeid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->badgeid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

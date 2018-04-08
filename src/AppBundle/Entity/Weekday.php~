@@ -1,0 +1,94 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Weekday
+ *
+ * @ORM\Table(name="weekday", indexes={@ORM\Index(name="DayID", columns={"DayID"})})
+ * @ORM\Entity
+ */
+class Weekday
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DayName", type="string", length=50, nullable=true)
+     */
+    private $dayname = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DayShort", type="string", length=1, nullable=true)
+     */
+    private $dayshort = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="DayID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $dayid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Petjob", inversedBy="dayid")
+     * @ORM\JoinTable(name="petworkdays",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="DayID", referencedColumnName="DayID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="PetJobID", referencedColumnName="PetJobID")
+     *   }
+     * )
+     */
+    private $petjobid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\School", inversedBy="dayid")
+     * @ORM\JoinTable(name="schooldays",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="DayID", referencedColumnName="DayID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="SchoolID", referencedColumnName="SchoolID")
+     *   }
+     * )
+     */
+    private $schoolid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Job", inversedBy="dayid")
+     * @ORM\JoinTable(name="workdays",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="DayID", referencedColumnName="DayID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="JobID", referencedColumnName="JobID")
+     *   }
+     * )
+     */
+    private $jobid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->petjobid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->schoolid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->jobid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

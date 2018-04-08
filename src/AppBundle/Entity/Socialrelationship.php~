@@ -1,0 +1,54 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Socialrelationship
+ *
+ * @ORM\Table(name="socialrelationship", indexes={@ORM\Index(name="SocRelID", columns={"SocRelID"})})
+ * @ORM\Entity
+ */
+class Socialrelationship
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SocRelIcon", type="string", length=80, nullable=true)
+     */
+    private $socrelicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SocRelName", type="string", length=60, nullable=false)
+     */
+    private $socrelname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MinSTR", type="integer", nullable=true)
+     */
+    private $minstr = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MinLTR", type="integer", nullable=true)
+     */
+    private $minltr = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SocRelID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $socrelid;
+
+
+}
+

@@ -1,0 +1,90 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Petzodiac
+ *
+ * @ORM\Table(name="petzodiac", indexes={@ORM\Index(name="IntLevel", columns={"IntLevel"}), @ORM\Index(name="ActivityLevel", columns={"ActivityLevel"}), @ORM\Index(name="FriendLevel", columns={"FriendLevel"}), @ORM\Index(name="AggLevel", columns={"AggLevel"}), @ORM\Index(name="CleanLevel", columns={"CleanLevel"})})
+ * @ORM\Entity
+ */
+class Petzodiac
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Icon", type="string", length=80, nullable=true)
+     */
+    private $icon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=60, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PZID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $pzid;
+
+    /**
+     * @var \AppBundle\Entity\Pettrait
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pettrait")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IntLevel", referencedColumnName="PetTraitID")
+     * })
+     */
+    private $intlevel;
+
+    /**
+     * @var \AppBundle\Entity\Pettrait
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pettrait")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ActivityLevel", referencedColumnName="PetTraitID")
+     * })
+     */
+    private $activitylevel;
+
+    /**
+     * @var \AppBundle\Entity\Pettrait
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pettrait")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FriendLevel", referencedColumnName="PetTraitID")
+     * })
+     */
+    private $friendlevel;
+
+    /**
+     * @var \AppBundle\Entity\Pettrait
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pettrait")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="AggLevel", referencedColumnName="PetTraitID")
+     * })
+     */
+    private $agglevel;
+
+    /**
+     * @var \AppBundle\Entity\Pettrait
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pettrait")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="CleanLevel", referencedColumnName="PetTraitID")
+     * })
+     */
+    private $cleanlevel;
+
+
+}
+

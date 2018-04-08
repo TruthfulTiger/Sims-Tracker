@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Interest
+ *
+ * @ORM\Table(name="interest", indexes={@ORM\Index(name="InterestID", columns={"InterestID"})})
+ * @ORM\Entity
+ */
+class Interest
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="InterestIcon", type="string", length=80, nullable=true)
+     */
+    private $interesticon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="InterestName", type="string", length=50, nullable=false)
+     */
+    private $interestname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="InterestID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $interestid;
+
+
+}
+

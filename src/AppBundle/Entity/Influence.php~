@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Influence
+ *
+ * @ORM\Table(name="influence")
+ * @ORM\Entity
+ */
+class Influence
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="InfLevelName", type="string", length=60, nullable=false)
+     */
+    private $inflevelname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MaxPoints", type="integer", nullable=false)
+     */
+    private $maxpoints;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="FriendsNeeded", type="integer", nullable=false)
+     */
+    private $friendsneeded;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="InfluenceID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $influenceid;
+
+
+}
+

@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Fish
+ *
+ * @ORM\Table(name="fish", indexes={@ORM\Index(name="FishID", columns={"FishID"})})
+ * @ORM\Entity
+ */
+class Fish
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FishName", type="string", length=60, nullable=false)
+     */
+    private $fishname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SellPrice", type="integer", nullable=true)
+     */
+    private $sellprice = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BadgeLevel", type="string", length=50, nullable=true)
+     */
+    private $badgelevel = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="FishID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $fishid;
+
+
+}
+

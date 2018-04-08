@@ -1,0 +1,69 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Major
+ *
+ * @ORM\Table(name="major", indexes={@ORM\Index(name="MajorID", columns={"MajorID"})})
+ * @ORM\Entity
+ */
+class Major
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MajorIcon", type="string", length=80, nullable=true)
+     */
+    private $majoricon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MajorName", type="string", length=50, nullable=false)
+     */
+    private $majorname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=100, nullable=true)
+     */
+    private $description = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MajorID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $majorid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Career", inversedBy="majorid")
+     * @ORM\JoinTable(name="majorcareer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="MajorID", referencedColumnName="MajorID")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="CareerID", referencedColumnName="CareerID")
+     *   }
+     * )
+     */
+    private $careerid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->careerid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

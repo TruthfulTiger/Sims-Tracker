@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Command
+ *
+ * @ORM\Table(name="command")
+ * @ORM\Entity
+ */
+class Command
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CommandName", type="string", length=60, nullable=false)
+     */
+    private $commandname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CommandID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $commandid;
+
+
+}
+

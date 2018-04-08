@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Season
+ *
+ * @ORM\Table(name="season", indexes={@ORM\Index(name="SeasonID", columns={"SeasonID"})})
+ * @ORM\Entity
+ */
+class Season
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SeasonIcon", type="string", length=80, nullable=true)
+     */
+    private $seasonicon = 'NULL';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SeasonName", type="string", length=60, nullable=false)
+     */
+    private $seasonname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TotalDays", type="integer", nullable=true)
+     */
+    private $totaldays = 'NULL';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SeasonID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $seasonid;
+
+
+}
+
