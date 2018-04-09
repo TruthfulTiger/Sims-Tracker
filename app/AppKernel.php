@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new AppBundle\AppBundle(),
         ];
 
